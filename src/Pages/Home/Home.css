@@ -1,0 +1,187 @@
+.container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0066cc;
+  }
+  
+  .nav a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .nav a:hover {
+    color: #0066cc;
+  }
+  
+  .hero {
+    background: linear-gradient(135deg, #0066cc, #1a8cff);
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+  
+  .ctaButton {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ctaButton:hover {
+    background-color: #e65c00;
+  }
+  
+  .courses, .about, .contact {
+    padding: 4rem 5%;
+  }
+  
+  .courses h3, .about h3, .contact h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .courseGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .courseCard {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .courseCard:hover {
+    transform: translateY(-5px);
+  }
+  
+  .courseCard img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .courseCard h4 {
+    font-size: 1.2rem;
+    margin: 1rem;
+  }
+  
+  .courseCard p {
+    margin: 0 1rem 1rem;
+    color: #666;
+  }
+  
+  .about {
+    background-color: #f8f9fa;
+  }
+  
+  .about ul {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+  }
+  
+  .about li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .contactForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .contactForm input,
+  .contactForm textarea {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .contactForm textarea {
+    height: 150px;
+  }
+  
+  .contactForm button {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contactForm button:hover {
+    background-color: #0052a3;
+  }
+  
+  .footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .nav {
+      margin-top: 1rem;
+    }
+  
+    .nav a {
+      margin: 0 0.5rem;
+    }
+  
+    .hero h2 {
+      font-size: 2rem;
+    }
+  
+    .hero p {
+      font-size: 1rem;
+    }
+  }

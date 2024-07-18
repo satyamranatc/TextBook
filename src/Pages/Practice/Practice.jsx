@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import "./Practice.css"
 
 export default function Practice({ CourseData }) {
   const [CourseCategory, setCourseCategory] = useState([]);
   const [QuizQuestions, setQuizQuestions] = useState([]);
+  const [UserAnswers, setUserAnswers] = useState({});
+  const [TotalScore, setTotalScore] = useState(0);
 
   const MCQ = {
     Math: [
@@ -255,7 +258,6 @@ export default function Practice({ CourseData }) {
       },
     ],
   };
-
   useEffect(() => {
     const categories = CourseData.map((e) => e.genere);
     setCourseCategory(categories);
@@ -267,12 +269,26 @@ export default function Practice({ CourseData }) {
     setQuizQuestions(questions);
   };
 
-  function handleSubmit(e)
-  {
-    e.preventDefault()
+  const handleAnswerChange = (qIndex, answer) => {
+    setUserAnswers({
+      ...UserAnswers,
+      [qIndex]: answer,
+    });
+  };
 
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let score = 0;
 
+    QuizQuestions.forEach((question, index) => {
+      if (UserAnswers[index] === question.correctAnswer) {
+        score++;
+      
+      }
+    });
+    setTotalScore(score);
+   
+  };
 
   return (
     <div className="practice-container">
@@ -287,26 +303,39 @@ export default function Practice({ CourseData }) {
 
       <hr />
 
-      <form onSubmit={(e)=>handleSubmit(e)}>
-        <ol>
-          {QuizQuestions.map((questions, qindex) => (
-            <li key={qindex}>
-              <h3>{questions.question}</h3>
+      {QuizQuestions.length > 0 && (
+        <form onSubmit={handleSubmit}>
+          <ol>
+            {QuizQuestions.map((questions, qIndex) => (
+              <li key={qIndex}>
+                <h3>{questions.question}</h3>
+                {questions.options.map((option, oIndex) => (
+                  <label key={oIndex}>
+                    <input
+                      type="radio"
+                      name={`question${qIndex}`}
+                      value={option}
+                      onChange={() => handleAnswerChange(qIndex, option)}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </li>
+            ))}
+          </ol>
+          <button type="submit">Submit</button>
+        </form>
 
-              {questions.options.map((option, oindex) => (
-                <label key={oindex}>
-                  <input
-                    type="radio"
-                    name={`question${qindex}`}
-                    value={option}
-                  />
-                  {option}
-                </label>
-              ))}
-            </li>
-          ))}
-        </ol>
-      </form>
+      )}
+
+    
+        <center>
+          <h2>Your Score: {TotalScore}</h2>
+          
+        </center>
     </div>
   );
 }
+
+
+

@@ -1,15 +1,19 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./Course.css";
 
 import CourseCard from "./CourseCard.jsx";
 import CourseDetails from "./CourseDetails.jsx";
 
-export default function Course({CourseData,setCourseData,addCartCourses,setAddCartCourses}) {
+export default function Course({
+  CourseData,
+  setCourseData,
+  addCartCourses,
+  setAddCartCourses,
+}) {
   // Making course data:
 
-  let [SelectedCourse,setSelectedCourse] = useState("");
-
+  let [SelectedCourse, setSelectedCourse] = useState("");
 
   return (
     <div id="CourseCardContainer">
@@ -23,13 +27,27 @@ export default function Course({CourseData,setCourseData,addCartCourses,setAddCa
               </div>
               <div id="CourseList">
                 {CourseData.map((Cd, i) => (
-                  <CourseCard key={i} CourseDetails={Cd} setSelectedCourse = {setSelectedCourse} />
+                  <CourseCard
+                    key={i}
+                    CourseDetails={Cd}
+                    setSelectedCourse={setSelectedCourse}
+                  />
                 ))}
               </div>
             </>
           }
         />
-        <Route path="CourseDetails" element={<CourseDetails SelectedCourse = {SelectedCourse} CourseData = {CourseData} addCartCourses = {addCartCourses}  setAddCartCourses = {setAddCartCourses}  />} />
+        <Route
+          path="CourseDetails"
+          element={
+            <CourseDetails
+              SelectedCourse={SelectedCourse}
+              CourseData={CourseData}
+              addCartCourses={addCartCourses}
+              setAddCartCourses={setAddCartCourses}
+            />
+          }
+        />
       </Routes>
     </div>
   );
